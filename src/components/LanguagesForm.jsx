@@ -40,7 +40,9 @@ const LanguagesForm = ({
       {formSubmitted && !data.backend && (
         <p className="error-message">{errorMessage[index]?.backend}</p>
       )}
-      <button onClick={() => deleteFields(index)}>Delete</button>
+      <button className="delete_btn" onClick={() => deleteFields(index)}>
+        Delete
+      </button>
     </div>
   );
 };

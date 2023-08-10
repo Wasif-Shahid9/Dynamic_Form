@@ -53,7 +53,9 @@ const RenderForm = ({
             <p className="error-message">{errorMessage[index]?.age}</p>
           )}
           <br />
-          <button onClick={() => deleteFields(index)}>Delete</button>
+          <button onClick={() => deleteFields(index)} className="delete_btn">
+            Delete
+          </button>
         </div>
       );
 
@@ -245,6 +247,7 @@ function App() {
     setFormSubmitted(true);
     if (validateForm()) {
       // console.log("Form data:", formFields);
+      alert("Form is Submitted");
     } else {
       // alert("Plz Fill All the Fields");
       // console.log("Not submitted");
@@ -254,6 +257,7 @@ function App() {
   return (
     <>
       <div className="app">
+        <h1 className="heading">Dynamic Form</h1>
         {formFields.map((data, index) => {
           return (
             <RenderForm
@@ -270,22 +274,28 @@ function App() {
             />
           );
         })}
+        <div className="select__fields">
+          <label>Plz Select Form Type:</label>
+          <select
+            className="select"
+            name="typeSelect"
+            onChange={(event) => setTypeSelect(event.target.value)}
+            defaultValue={typeSelect}
+          >
+            <option value="EDUCATION">Education</option>
+            <option value="INFO">Info</option>
+            <option value="LANGUAGE">Language</option>
+          </select>
+        </div>
+        <div className="submit__btns">
+          <button onClick={handleAddFields} className="add__btn">
+            Add More
+          </button>
 
-        <select
-          className="select"
-          name="typeSelect"
-          onChange={(event) => setTypeSelect(event.target.value)}
-          defaultValue={typeSelect}
-        >
-          <option value="EDUCATION">Education</option>
-          <option value="INFO">Info</option>
-          <option value="LANGUAGE">Language</option>
-        </select>
-        <button onClick={handleAddFields} className="add__btn">
-          Add More
-        </button>
-
-        <button onClick={handleSubmit}>SUBMIT</button>
+          <button onClick={handleSubmit} className="submit__btn">
+            SUBMIT
+          </button>
+        </div>
       </div>
     </>
   );

@@ -61,7 +61,9 @@ const EducationForm = ({
         <p className="error-message">{errorMessage[index]?.completionYear}</p>
       )}
 
-      <button onClick={() => deleteFields(index)}>Delete</button>
+      <button className="delete_btn" onClick={() => deleteFields(index)}>
+        Delete
+      </button>
     </div>
   );
 };
